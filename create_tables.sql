@@ -14,11 +14,11 @@ CREATE TABLE countries (
 -- CIRCUITS
 -- =========================
 CREATE TABLE circuits (
-  circuitId SERIAL PRIMARY KEY,
+  circuitId TEXT PRIMARY KEY,
   circuitRef TEXT,
   name TEXT NOT NULL,
   location TEXT,
-  country VARCHAR(3),
+  country TEXT,
   lat DOUBLE PRECISION,
   lng DOUBLE PRECISION,
   alt INTEGER,
@@ -29,7 +29,7 @@ CREATE TABLE circuits (
 -- CONSTRUCTORS
 -- =========================
 CREATE TABLE constructors (
-  constructorId SERIAL PRIMARY KEY,
+  constructorId TEXT PRIMARY KEY,
   constructorRef TEXT,
   name TEXT NOT NULL,
   nationality TEXT,
@@ -40,7 +40,7 @@ CREATE TABLE constructors (
 -- DRIVERS
 -- =========================
 CREATE TABLE drivers (
-  driverId SERIAL PRIMARY KEY,
+  driverId TEXT PRIMARY KEY,
   driverRef TEXT,
   number INTEGER,
   code VARCHAR(3),
@@ -63,10 +63,10 @@ CREATE TABLE seasons (
 -- RACES
 -- =========================
 CREATE TABLE races (
-  raceId SERIAL PRIMARY KEY,
+  raceId TEXT PRIMARY KEY,
   year INTEGER,
   round INTEGER,
-  circuitId INTEGER,
+  circuitId TEXT,
   name TEXT,
   date DATE,
   time TIME,
@@ -77,21 +77,13 @@ CREATE TABLE races (
 );
 
 -- =========================
--- STATUS
--- =========================
-CREATE TABLE status (
-  statusId SERIAL PRIMARY KEY,
-  status TEXT
-);
-
--- =========================
 -- RESULTS
 -- =========================
 CREATE TABLE results (
   resultId SERIAL PRIMARY KEY,
-  raceId INTEGER,
-  driverId INTEGER,
-  constructorId INTEGER,
+  raceId TEXT,
+  driverId TEXT,
+  constructorId TEXT,
   number INTEGER,
   grid INTEGER,
   position INTEGER,
@@ -105,20 +97,19 @@ CREATE TABLE results (
   rank INTEGER,
   fastestLapTime TEXT,
   fastestLapSpeed TEXT,
-  statusId INTEGER,
+  status TEXT,
 
   FOREIGN KEY (raceId) REFERENCES races(raceId) ON DELETE CASCADE,
   FOREIGN KEY (driverId) REFERENCES drivers(driverId),
-  FOREIGN KEY (constructorId) REFERENCES constructors(constructorId),
-  FOREIGN KEY (statusId) REFERENCES status(statusId)
+  FOREIGN KEY (constructorId) REFERENCES constructors(constructorId)
 );
 
 -- =========================
 -- LAPTIMES
 -- =========================
 CREATE TABLE laptimes (
-  raceId INTEGER,
-  driverId INTEGER,
+  raceId TEXT,
+  driverId TEXT,
   lap INTEGER,
   position INTEGER,
   time TEXT,
@@ -134,8 +125,8 @@ CREATE TABLE laptimes (
 -- PITSTOPS
 -- =========================
 CREATE TABLE pitstops (
-  raceId INTEGER,
-  driverId INTEGER,
+  raceId TEXT,
+  driverId TEXT,
   stop INTEGER,
   lap INTEGER,
   time TEXT,
@@ -153,9 +144,9 @@ CREATE TABLE pitstops (
 -- =========================
 CREATE TABLE qualifying (
   qualifyId SERIAL PRIMARY KEY,
-  raceId INTEGER,
-  driverId INTEGER,
-  constructorId INTEGER,
+  raceId TEXT,
+  driverId TEXT,
+  constructorId TEXT,
   number INTEGER,
   position INTEGER,
   q1 TEXT,
@@ -172,14 +163,13 @@ CREATE TABLE qualifying (
 -- =========================
 CREATE TABLE driver_standings (
   driverStandingsId SERIAL PRIMARY KEY,
-  raceId INTEGER,
-  driverId INTEGER,
+  season INTEGER,
+  round INTEGER,
+  driverId TEXT,
   points DOUBLE PRECISION,
   position INTEGER,
-  positionText TEXT,
   wins INTEGER,
 
-  FOREIGN KEY (raceId) REFERENCES races(raceId) ON DELETE CASCADE,
   FOREIGN KEY (driverId) REFERENCES drivers(driverId)
 );
 
@@ -199,8 +189,9 @@ CREATE TABLE airports (
   isoRegion TEXT,
   city TEXT,
   scheduled_service BOOLEAN,
-  gpsCode TEXT,
+  icaoCode TEXT,
   iataCode TEXT,
+  gpsCode TEXT,
   localCode TEXT,
   homeLink TEXT,
   wikipediaLink TEXT,
