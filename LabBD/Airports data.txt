@@ -1,0 +1,28 @@
+https://ourairports.com/data/
+
+
+Terms of use
+All data is released to the Public Domain, and comes with no guarantee of accuracy or fitness for use.
+
+Datasets
+For information about the columns and values in the datasets, please visit the data dictionary and map legend (for airport and navaid types).
+
+Effective 3 November 2021, the download files are stored on GitHub, in the repository davidmegginson/ourairports-data. The old download links redirect to there. Cloning that repository is an alternative way to access the data.
+
+airports.csv (12,255,969 bytes, last modified Mar 27, 2025)
+    Large file, containing information on all airports on this site. 
+airport-frequencies.csv (1,287,730 bytes, last modified Mar 27, 2025)
+    Large file, listing communication frequencies for the airports in airports.csv. 
+airport-comments.csv (4,429,992 bytes, last modified Mar 27, 2025)
+    Large file, listing member comments for the airports in airports.csv. 
+runways.csv (3,976,046 bytes, last modified Mar 27, 2025)
+    Large file, listing runways for the airports in airports.csv. 
+navaids.csv (1,525,245 bytes, last modified Mar 27, 2025)
+    Large file, listing worldwide radio navigation aids.
+countries.csv (24,583 bytes, last modified Mar 27, 2025)
+    A list of the world's countries. You need this spreadsheet to interpret the country codes in the airports and navaids files. 
+regions.csv (478,221 bytes, last modified Mar 27, 2025)
+    A list of all countries' top-level administrative subdivisions (provinces, governorates, states, etc.). You need this spreadsheet to interpret the region codes in the airport file. 
+
+Format
+field separator (",") and the character encoding ("UTF-8")
