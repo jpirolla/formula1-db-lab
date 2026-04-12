@@ -1,0 +1,112 @@
+Universidade de São Paulo - São Carlos
+Instituto de Ciências Matemáticas e de Computação
+Trabalho Prático T1 – Exercícios sobre a DML
+Docente: Caetano Traina Jr. — caetano@icmc.usp.br
+PAE: Gabriel Lucca de Melo — melogabriel@usp.br 1º Semestre de 2026
+
+Data para entrega: 15 de abril de 2026
+
+Datasets
+Base de dados da Fórmula 1 - FIA, com as cidades e aeroportos do mundo.
+A base de dados a ser utilizada é a mesma preparada no Projeto Prático 3. Caso
+necessário, os arquivos originais para a carga de dados encontram-se no Google Drive, e podem
+ser acessados no endereço este link. Para acessar os arquivos, você deve estar logado no Google
+Drive com sua conta USP. Cada arquivo corresponde a uma tabela, que deve ser carregada na
+base de dados.
+Os dados originais foram ligeiramente modificados para facilitar o trabalho. Mas você
+pode usar os dados originais se quiser, por exemplo, para incluir os dados atualizados das
+últimas corridas. Nesse caso, eles podem ser obtidos nos seguintes sites:
+• Dados da Fórmula-1: Formula 1 Championships (1950-2025) – Kaggle
+• Países e Cidades do planeta: GeoNames
+• Aeroportos: OurAirports
+
+Atividades da semana
+A atividade da semana é composta de duas partes usando o SGBD escolhido:
+1. efetuar uma limpeza preliminar para melhorar a qualidade dos dados carregados; e
+2. executar consultas sobre eles.
+
+Melhorar a qualidade dos dados
+Visando melhorar o esquema e a qualidade dos dados, aproximando as atividades da disciplina de cenários reais, deverá ser realizada uma etapa adicional de limpeza, normalização e
+tratamento de inconsistências sobre o modelo relacional e os dados utilizados no projeto.
+Esta é uma etapa importante que inclui a reflexão sobre a modelagem e integridade de
+dados, que deve sempre ser considerada pelo profissional responsável em suas atividades. Neste
+trabalho, deverão ser executadas as seguintes atividades:
+
+1
+
+• Alterar o esquema relacional para melhorar a qualidade dos dados e do desempenho das
+consultas subsequentes:
+– substituir o atributo textual de nacionalidade nas entidades Pilotos e Construtores
+por uma referência à entidade Países;
+– incluir o atributo Nacionalidade na entidade Países;
+• Durante o processo de migração dos dados, as inconsistências identificadas deverão ser tratadas adequadamente, de modo a atender ao esquema relacional definido e aos requisitos
+de qualidade dos dados;
+• Execução de uma etapa de deduplicação da entidade Cidades, considerando que esse é
+um caso com alta variabilidade nos dados provenientes de diferentes fontes.
+Para a deduplicação, deverão ser realizadas as seguintes atividades:
+– identificar registros que se referem à mesma cidade, considerando atributos como
+nome, país e/ou proximidade geográfica;
+– definir critérios de equivalência entre registros;
+– consolidar registros duplicados, mantendo o mais completo ou realizando a integração
+(merge) das informações;
+– atualizar as referências nas demais tabelas (como Aeroportos e Circuitos), garantindo que não haja perda dos vínculos;
+– apresentar métricas do processo, incluindo quantidade de registros antes e depois,
+número de duplicatas tratadas, dentre os indicadores relevantes.
+Um problema prático recorrente nos processos de integração de dados provenientes de
+fontes diferentes é a ocorrência de variações na representação textual dos valores. No contexto
+deste trabalho, esse problema ocorre principalmente nos nomes de cidades oriundos das três
+diferentes bases originais que usamos (Fórmula 1, GeoNames e Aeroportos). A correção dessas
+inconsistências é conhecida como deduplicação de dados.
+Em alguns casos, é possível aplicar regras de transformação textual (por exemplo, utilizando expressões regulares) para padronização dos dados. No entanto, isso nem sempre é
+suficiente, sendo necessário definir critérios mais robustos de equivalência.
+Dicas:
+• Para definir critérios de equivalência entre cidades provenientes de fontes distintas, podese considerar que não existem cidades diferentes a menos de 1,0 km de distância;
+• Nem todas as inconsistências poderão ser tratadas automaticamente, sendo necessário
+estabelecer regras claras e justificadas;
+• Atenção para garantir que as alterações realizadas não comprometam a integridade referencial do banco de dados.
+
+Executar consultas sobre os dados
+O objetivo desta parte é reconhecer a estrutura das tabelas da base, para executar consultas
+interessantes para obter informações para a Formula Um.
+Exercício 1)
+Liste o total de pontos obtido por cada piloto, por ano e em ordem descendente de pontuação.
+Dica: Os pontos obtidos em cada corrida estão na tabela DriverStandings.
+2
+
+Exercício 2)
+Selecione o nome do piloto que partiu mais vezes em primeiro lugar (grid )
+da história. Apresente o nome completo do piloto e a quantidade de vezes.
+Dica: Considere a tabela RESULTS.
+Exercício 3)
+Para cada país que sedia corridas, liste a quantidade de cidades e o número
+total de aeroportos existentes nesse país.
+Dica: Inicialmente, filtre os países que possuem vínculo com os circuitos e, posteriormente,
+realize a contagem.
+
+Entrega da semana
+Cada equipe deverá entregar dois arquivos:
+1. Um arquivo no formato .sql contendo:
+• as alterações no esquema relacional;
+• os scripts de transformação e limpeza dos dados;
+• as atualizações necessárias para garantir consistência e integridade;
+• os comandos de execução das consultas.
+2. Um arquivo no formato .pdf contendo um relatório sucinto com:
+• a descrição das alterações realizadas no modelo;
+• os critérios adotados para identificação de duplicatas;
+• as estratégias utilizadas para deduplicação;
+• as métricas obtidas pela execução do processo de correção (quantidade de registros
+antes/depois, duplicatas tratadas, etc.);
+• exemplos dos testes de cada consulta (por exemplo, uma captura de tela do resultado.
+Para resultados muito longos, mostrar somente as primeiras as 10 primeiras linhas
+do resultado.
+• descrição das principais dificuldades encontradas e as decisões tomadas.
+O relatório deve evidenciar claramente as decisões adotadas pelo grupo e justificar as
+escolhas realizadas no processo de limpeza e normalização dos dados.
+Como a atividade tem prazo de entrega máximo de uma hora antes da próxima aula, os
+arquivos devem ser submetidos
+
+até às 18:00 do dia 15 de abril de 2026
+com a postagem apenas do líder da equipe.
+Bom Trabalho!
+
+3
