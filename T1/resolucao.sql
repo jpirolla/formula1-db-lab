@@ -173,7 +173,7 @@ JOIN drivers d ON d.id = r.driver_id
 WHERE r.grid = 1
 GROUP BY d.given_name, d.family_name
 ORDER BY qtd_largadas_grid_1 DESC
-LIMIT 1;
+FETCH FIRST 1 ROWS WITH TIES;
 
 -- Exercício 3: Para cada país que sedia corridas, liste a quantidade de cidades 
 -- e o número total de aeroportos existentes nesse país.
