@@ -165,6 +165,7 @@ ORDER BY total_pontos DESC, se.year DESC;
 
 -- Exercício 2: Nome do piloto que partiu mais vezes em primeiro lugar (grid) da história.
 -- Apresente o nome completo do piloto e a quantidade de vezes.
+
 SELECT 
     d.given_name || ' ' || d.family_name AS piloto_nome,
     COUNT(*) AS qtd_largadas_grid_1
